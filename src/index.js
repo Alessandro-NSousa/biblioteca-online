@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './rotas/App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle  } from "styled-components";
+import { BrowserRouter, Routes, Route} from "react-router-dom"; //esses componentes são utilizados para  criar as rotas da nossa aplicação
+import Header from './components/header';
+import Favoritos from './rotas/Favoritos';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -26,7 +29,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/favoritos" element={<Favoritos/>} />
+        <Route path="/" element={<App/>} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
